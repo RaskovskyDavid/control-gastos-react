@@ -6,8 +6,8 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto}) => {
   const [mensaje, setMensaje] = useState('')
   const handlePresupuesto = (e) => {
       e.preventDefault()
-      console.log(presupuesto.presupuesto)
-      if(!isNaN(presupuesto) || Number(presupuesto) < 0 )
+      console.log(presupuesto)
+      if(!Number(presupuesto) || presupuesto < 0 )
       {
          setMensaje('no es un presupuesto valido')
       }
