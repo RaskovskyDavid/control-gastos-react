@@ -6,9 +6,12 @@ function App() {
 const [presupuesto, setPresupuesto] = useState(0);
 const [isValidPersupuesto, setIsValidPresupuesto] = useState(false);
 const [modal, setModal] = useState(false);
-
+const [animarModal, setAnimarModal] = useState(false)
 const handleNuevoGasto = () => {
   setModal(true)
+  setTimeout(()=>{
+    setAnimarModal(true)
+  },500)
 }
   return (
    <>
@@ -28,7 +31,10 @@ const handleNuevoGasto = () => {
 
     ) 
   }
-  {modal && <Modal setModal={setModal} />}
+  {modal && <Modal 
+  setAnimarModal={setAnimarModal}
+  animarModal={animarModal}
+  setModal={setModal} />}
     
     </>
   )
