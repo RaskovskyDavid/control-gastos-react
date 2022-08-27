@@ -2,7 +2,7 @@ import {React, useState} from 'react'
 import Mensaje from './Mensaje'
 import CerrarBtn from '../src/img/cerrar.svg'
 
-const Modal = ({setModal,animarModal, setAnimarModal}) => {
+const Modal = ({setModal,animarModal, setAnimarModal,guardarGasto}) => {
     const [nombre, setNombre] = useState('');
     const [cantidad, setCantidad] = useState(0);
     const [categoria, setCategoria] = useState('');
@@ -25,7 +25,7 @@ const Modal = ({setModal,animarModal, setAnimarModal}) => {
             }, 3000)
             return;
         }
-        setMensaje("")
+        guardarGasto({nombre,cantidad,categoria})
 
     }
     
