@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { formatearFecha } from '../src/helpers'
 const Gasto = ({gasto}) => {
     const {categoria, nombre, cantidad, fecha, id} = gasto;
   return (
@@ -8,8 +8,9 @@ const Gasto = ({gasto}) => {
         <div className="descripcion-gasto">
             <p className="categoria">{categoria}</p>
             <p className="nombre-gasto">{nombre}</p>
-          <p className="fecha-gasto">
-                <span>{fecha}</span>
+            <p className="fecha-gasto">
+                Agregado el {''}
+                <span>{formatearFecha(fecha)}</span>
             </p> 
         </div>
       </div>
