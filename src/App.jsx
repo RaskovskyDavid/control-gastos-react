@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 import Modal from '../components/Modal';
 import {generarId} from './helpers';
+import ListadoGastos from '../components/ListadoGastos';
 function App() {
 const [presupuesto, setPresupuesto] = useState(0);
 const [isValidPersupuesto, setIsValidPresupuesto] = useState(false);
@@ -17,6 +18,7 @@ const handleNuevoGasto = () => {
 }
 const guardarGasto = (gasto) => {
   gasto.id = generarId();
+  gasto.fecha = Date.now();
   setGastos([...gastos, gasto])
 
   setAnimarModal(false)
@@ -33,13 +35,19 @@ const guardarGasto = (gasto) => {
     setIsValidPresupuesto={setIsValidPresupuesto}
     />
     {isValidPersupuesto && (
-      <div className="nuevo-gasto">
-      <img 
-      src={IconoNuevoGasto} 
-      alt='Icono Nuevo Gasto'
-      onClick={handleNuevoGasto} />
-    </div>
-
+      <>
+      <main>
+        <ListadoGastos 
+          gastos={gastos}
+        />
+      </main>
+        <div className="nuevo-gasto">
+          <img 
+          src={IconoNuevoGasto} 
+          alt='Icono Nuevo Gasto'
+          onClick={handleNuevoGasto} />
+        </div>
+    </>
     ) 
   }
   {modal && <Modal 
