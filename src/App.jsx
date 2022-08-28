@@ -38,6 +38,7 @@ const guardarGasto = (gasto) => {
     //actualizar
     const gastosActualizados = gastos.map(gastoState => gastoState.id === gasto.id? gasto : gastoState)
     setGastos(gastosActualizados)
+    setGastoEditar({})
   }
   else
   {
@@ -89,6 +90,7 @@ const guardarGasto = (gasto) => {
   setModal={setModal}
   guardarGasto={guardarGasto}
   gastoEditar={gastoEditar}
+  setGastoEditar={setGastoEditar}
   />}
       </div>
     </>
