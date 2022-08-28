@@ -28,12 +28,13 @@ const guardarGasto = (gasto) => {
 }
   return (
    <>
-   <div className={modal && "fijar"} >
+   <div className={modal ? "fijar": ""} >
     <Header
     presupuesto={presupuesto}
     setPresupuesto={setPresupuesto}
     isValidPersupuesto={isValidPersupuesto}
     setIsValidPresupuesto={setIsValidPresupuesto}
+    gastos={gastos}
     />
     
     {isValidPersupuesto && (
