@@ -6,16 +6,32 @@ import {generarId} from './helpers';
 import ListadoGastos from '../components/ListadoGastos';
 import { object } from 'prop-types';
 function App() {
-const [presupuesto, setPresupuesto] = useState(0);
+const [presupuesto, setPresupuesto] = useState(
+ Number(localStorage.getItem('presupuesto')) ?? 0
+);
 const [isValidPersupuesto, setIsValidPresupuesto] = useState(false);
 const [modal, setModal] = useState(false);
 const [animarModal, setAnimarModal] = useState(false);
 const [gastoEditar, setGastoEditar] = useState({})
-const [gastos, setGastos] = useState([]);
+const [gastos, setGastos] = useState(localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []);
 const eliminarGasto = (id) => {
   const gastosActualizados = gastos.filter(gasto => gasto.id !== id)
   setGastos(gastosActualizados)
 }
+useEffect(() =>{
+  const presupuestoToLS = Number(localStorage.getItem('presupuesto')) ?? 0;
+
+  if(presupuestoToLS > 0)
+  {
+    setIsValidPresupuesto(true)
+  }
+},[])
+  useEffect(() =>{
+    localStorage.setItem('gastos', JSON.stringify(gastos)?? [])
+  },[gastos])
+useEffect(() =>{
+  localStorage.setItem('presupuesto', presupuesto?? 0)
+},[presupuesto])
 useEffect(()=> {
   if(Object.keys(gastoEditar).length > 0)
   {
