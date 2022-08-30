@@ -89,6 +89,7 @@ const guardarGasto = (gasto) => {
     isValidPersupuesto={isValidPersupuesto}
     setIsValidPresupuesto={setIsValidPresupuesto}
     gastos={gastos}
+    setGastos={setGastos}
     />
     
     {isValidPersupuesto && (
